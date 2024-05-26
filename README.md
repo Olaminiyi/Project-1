@@ -69,3 +69,21 @@ curl http://127.0.0.1:80  or curl http://localhost:80
 To see if our web application server can respond to requests , use the public ip address of our instance on a web browser. http://`<Public-IP-Address>:80`
 
 ![alt text](images/1.7.png)
+
+### Installing MySQL
+
+We use MySQL as a relational database to store and manage data on our site.
+
+Install mysql using the `sudo apt install mysql` command.
+
+![alt text](images/1.8.png)
+
+Use the `sudo mysql_secure_installation` command to remove insecure default settings and enable protection for the database.
+
+![alt text](images/1.9.png)
+
+On successful secure configuration, `sudo mysql` on the terminal to have access to the MySQL DB.
+
+![alt text](images/1.10.png)
+
+Exit from the MySQL terminal by typing `exit`.
