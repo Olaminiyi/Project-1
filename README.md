@@ -103,4 +103,70 @@ On successfull installation of php and its modules we can check the version to s
 
 ![alt text](images/1.12.png)
 
+### Deploying Our Site on Apache's VirtualHost
+
+Next we set up a virtual host using apache to enable us deploy our webcontent on the webserver. Apache's virtualhosting ensures that one or more websites can run on a webserver via different IP addresses.
+
+![alt text](images/1.13.png)
+
+### Creating Web Domain For Our Site
+
+Apache webserver serves a website by the way of server blocks inside its `/var/www/` directory, and it can support multiple of this server blocks to host other websites.
+
+Here we create a new directory called projectlampstack inside the `/var/www/` directory.
+`sudo mkdir /var/www/projectlampstack`
+
+The we change permissions of the projectlampstack directory to the current user system
+
+`sudo chown -R $USER:$USER /var/www/projectlampstack`
+
+![alt text](images/1.14.png)
+
+The projectlampstack directory represents the directory which will contains files related to our website as it represents a new server block on the apache webserver. In order to spin up this server block we need to configure it by creating a `.conf` file.
+
+`sudo vi /etc/apache2/sites-available/projectlampstack.conf`
+
+The following represents the configuration needed to spin up the server block. Copy and paste into the editor.
+
+![alt text](images/1.15.png)
+
+Run `esc :wq`  to save and terminate vi editor.
+
+Run `sudo a2ensite projectlampstack` to activate the server block.
+
+Run `sudo a2dissite 000-default` to deactivate the default webserver block that comes with apache on default.
+
+Reload the apache2 server `sudo systemctl reload apache2`
+
+![alt text](images/1.16.png)
+
+Create an index.html file inside the `/var/www/projectlampstack`
+
+![alt text](images/1.17.png)
+
+Go to the broswer and open the webpage `http://<public_ip_address>:80`
+
+![alt text](images/1.18.png)
+
+The webpage can also be opened using the DNS name of the ubuntu EC2 instance
+
+![alt text](images/1.19.png)
+
+By default, the webserver has a preference for serving an `index.html` file based on the order of precedence by default in the DirectoryIndex settings of Apache.
+To serve an index.php containing the server-side code, you’ll need to edit the `/etc/apache2/mods-enabled/dir.conf` file and change the order in which the index.php file is listed within the DirectoryIndex.
+
+![alt text](images/1.20.png)
+
+Run the `sudo systemctl reload apache2` to restart the apache2 web server for the changes made to the DirectoryIndex to take effect.
+
+Create an index.php file in our webserver block and add the following code using the vim editor
+```
+<?php
+phpinfo();
+```
+![alt text](images/1.21.png)
+
+Input the instance public ip address on a web browser
+
+![alt text](images/1.22.png)
 
