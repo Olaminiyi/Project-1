@@ -87,3 +87,20 @@ On successful secure configuration, `sudo mysql` on the terminal to have access 
 ![alt text](images/1.10.png)
 
 Exit from the MySQL terminal by typing `exit`.
+
+### Installing PHP and its Modules
+
+**PHP** serves as a programming language which is useful for dynamically displaying contents of the webpage to users who make requests to the webserver.
+
+We need to install php alongside its modules, `php-mysql` which is php module that allows php to communicate with the mysql database, `libapache2-mod-php` which ensures that the apache web server handles the php contents properly.
+
+`sudo apt install php php-mysql libapache2-mod-php`.
+
+![alt text](images/1.11.png)
+
+On successfull installation of php and its modules we can check the version to see if it was properly installed.
+`php -v`
+
+![alt text](images/1.12.png)
+
+
