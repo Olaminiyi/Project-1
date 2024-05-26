@@ -49,3 +49,23 @@ $ systemctl status apache2
 ![alt text](images/1.4.png)
 
 If it shows a green text, it means the web server has been successfully spunned and is live.
+
+### Configuring Security Group Inbound Rules on EC2 Instance
+
+A Security group is a group of rules that acts as a virtual firewall to the type of traffic that enters (inbound traffic) or leaves (outbound traffic) an instance.
+
+When the instance is created, we have a default TCP rule on port 22 opened which is useful for SSH connection to a terminal. In order to ensure that our webpage are being acccessed on the internet, we need to open a TCP port 80 inbound rule.
+
+![alt text](images/1.5.png)
+
+To check the accessiblity of our web server on the internet, we curl the IP address/DNS name of our localhost.
+
+```
+curl http://127.0.0.1:80  or curl http://localhost:80
+```
+
+![alt text](images/1.6.png)
+
+To see if our web application server can respond to requests , use the public ip address of our instance on a web browser. http://`<Public-IP-Address>:80`
+
+![alt text](images/1.7.png)
